@@ -1,0 +1,43 @@
+<?php
+// Check if user is logged in
+if (!isset($_SESSION['admin_id'])) {
+    header('Location: login.php');
+    exit;
+}
+
+// Get dashboard stats
+$stats = get_dashboard_stats();
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Handmade Bracelets by Beadify</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <?php include 'includes/header.php'; ?>
+    <!-- End Header -->
+
+    <!-- Main Content -->
+    <main>
+        <section class="dashboard">
+            <h1>Dashboard</h1>
+            <p>Total Products: <?php echo $stats['total_products']; ?></p>
+            <p>Total Orders: <?php echo $stats['total_orders']; ?></p>
+            <p>Total Customers: <?php echo $stats['total_customers']; ?></p>
+            <p>Total Sales: <?php echo $stats['total_sales']; ?></p>
+        </section>
+    </main>
+    <!-- End Main Content -->
+
+    <!-- Footer -->
+    <?php include 'includes/footer.php'; ?>
+    <!-- End Footer -->
+
+    <script src="../js/script.js"></script>
+</body>
+</html>
